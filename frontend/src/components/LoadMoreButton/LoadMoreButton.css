@@ -1,0 +1,32 @@
+button {
+  display: inline-block;
+  border: none;
+
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  text-decoration: none;
+  background-color: #eae3da;
+  font-family: sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 50%;
+}
+
+button:hover,
+button:focus {
+  background-color: #c7bfb4;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.5);
+}
