@@ -7,12 +7,9 @@ header {
   background-color: red;
 }
 
-.header--title {
+.header__title {
   margin-right: auto;
   padding: 10px;
-}
-
-nav {
 }
 
 nav > ul {

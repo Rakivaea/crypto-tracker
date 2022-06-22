@@ -22,7 +22,7 @@ function roundPriceUsd(input) {
 
 function CryptoCard(props) {
   return (
-    <div className="CryptoCard">
+    <div className="crypto-card">
       <h3>{props.name}</h3>
       <p>{props.symbol}</p>
     </div>
@@ -50,11 +50,11 @@ export default function CryptoTable(props) {
   return (
     <div
       className={
-        props.isDesktop ? "table--container--desktop" : "table--container"
+        props.isDesktop ? "table-container--desktop" : "table-container--mobile"
       }
     >
       <table>
-        <thead className="light-mode--table-header">
+        <thead className="table-header--light-mode">
           <tr>
             <th colSpan="5">Name</th>
             <th colSpan="3">Price</th>

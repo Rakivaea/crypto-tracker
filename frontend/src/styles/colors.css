@@ -1,20 +1,20 @@
-.light-mode--background {
+.background--light-mode {
   background-color: #f8f5f2;
 }
 
-.light-mode--button {
+.button--light-mode {
   background-color: #078080;
   color: #232323;
 }
 
-.light-mode--headline {
+.headline--light-mode {
   color: #232323;
 }
 
-.light-mode--paragraph {
+.paragraph--light-mode {
   color: #222525;
 }
 
-.light-mode--table-header {
+.table-header--light-mode {
   background-color: #eae3da;
 }

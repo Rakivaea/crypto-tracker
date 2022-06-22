@@ -4,8 +4,8 @@ import "../../styles/colors.css";
 
 export default function Navbar() {
   return (
-    <header className="light-mode--background">
-      <h1 className="header--title light-mode--headline">Crypto tracker!</h1>
+    <header className="background--light-mode">
+      <h1 className="header__title headline--light-mode">Crypto tracker!</h1>
       <nav>
         <ul>
           <li>Test 1</li>
