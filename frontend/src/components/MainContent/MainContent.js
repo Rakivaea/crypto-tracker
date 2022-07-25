@@ -8,7 +8,7 @@ export default function MainContent() {
   const [cryptoAssets, setCryptoAssets] = useState([]);
   const [cryptoDetailedData, setCryptoDetailedData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingExpanded, setIsLoadingExpanded] = useState(false);
+  const [isLoadingExpanded, setIsLoadingExpanded] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(10);
   const [selectedKey, setSelectedKey] = useState("");
 
@@ -26,7 +26,6 @@ export default function MainContent() {
       setCurrentPosition((prevValue) => prevValue + 5);
     } catch (e) {
       console.log(e);
-      setIsLoading(true);
     }
   }
 

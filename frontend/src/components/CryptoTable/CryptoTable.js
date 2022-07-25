@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { LineChart } from "../LineChart/LineChart";
 import "./CryptoTable.css";
 import "../../styles/colors.css";
 import { nanoid } from "nanoid";
@@ -47,13 +48,15 @@ function getCurrentDate() {
 }
 
 function CryptoCardExpanded(props) {
-  console.log(props.cryptoDetailedData.minPrice);
   let minPrice = 0;
   let maxPrice = 0;
   let averagePrice = 0;
 
   let currentDate = getCurrentDate();
-
+  let isGain = false;
+  if (Number(props.changePercent24Hr) > 0) {
+    isGain = true;
+  }
   if (props.cryptoDetailedData.length !== 0) {
     minPrice = roundPriceUsd(Number(props.cryptoDetailedData.minPrice));
     maxPrice = roundPriceUsd(Number(props.cryptoDetailedData.maxPrice));
@@ -90,7 +93,7 @@ function CryptoCardExpanded(props) {
             </div>
           </div>
           <div className="crypto-card__chart">
-            <h1 className="center">CHART</h1>
+            <LineChart data={props.cryptoDetailedData.data} isGain={isGain} />
           </div>
         </>
       )}
