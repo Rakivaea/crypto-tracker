@@ -69,27 +69,28 @@ function CryptoCardExpanded(props) {
         <h1 className="center">Loading...</h1>
       ) : (
         <>
-          <div className="crypto-card__title">
-            <h2>
-              {props.name} ({props.symbol})
-            </h2>
-            <span>{currentDate}</span>
-          </div>
           <div className="crypto-card__info">
-            <div className="column">
-              <span className="info-title">HIGH</span>
-              <span>${maxPrice}</span>
-              <br />
-
-              <span className="info-title">LOW</span>
-              <span> ${minPrice}</span>
+            <div className="crypto-card__title">
+              <h2>
+                {props.name} ({props.symbol})
+              </h2>
+              <span>{currentDate}</span>
             </div>
-            <div className="column">
-              <span className="info-title">AVERAGE</span>
-              <span>${averagePrice}</span>
-              <br />
-              <span className="info-title">CHANGE</span>
-              <span> {props.changePercent24Hr}%</span>
+            <div className="crypto-card__stats">
+              <div className="column">
+                <span className="info-title">HIGH</span>
+                <span>${maxPrice}</span>
+                <br />
+                <span className="info-title">LOW</span>
+                <span> ${minPrice}</span>
+              </div>
+              <div className="column">
+                <span className="info-title">AVERAGE</span>
+                <span>${averagePrice}</span>
+                <br />
+                <span className="info-title">CHANGE</span>
+                <span> {props.changePercent24Hr}%</span>
+              </div>
             </div>
           </div>
           <div className="crypto-card__chart">

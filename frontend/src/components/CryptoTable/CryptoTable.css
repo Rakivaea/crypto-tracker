@@ -70,8 +70,8 @@ td:first-child {
   flex-direction: column;
   width: 100%;
   cursor: default;
-  background-color: lightgrey;
   border-radius: 8px;
+  border: 1px solid gray;
 }
 
 .crypto-card__title {
@@ -85,6 +85,13 @@ td:first-child {
 .crypto-card__info {
   display: flex;
   flex-direction: row;
+}
+
+.crypto-card__stats {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 10px;
 }
 
 .column {
@@ -108,4 +115,6 @@ td:first-child {
 
 .info-title {
   padding-right: 15px;
+  font-weight: 700;
+  color: gray;
 }

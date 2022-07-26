@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
   TimeScale,
+  Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "./LineChart.css";
@@ -21,15 +22,19 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  TimeScale
+  TimeScale,
+  Filler
 );
 
 export function LineChart(props) {
   let chartLineColor = "";
+  let chartFillColor = "";
   if (props.isGain) {
     chartLineColor = "rgb(8, 161, 8, .8)";
+    chartFillColor = "rgb(8, 161, 8, .3)";
   } else {
     chartLineColor = "rgba(225, 84, 84, .8)";
+    chartFillColor = "rgba(225, 84, 84, .3)";
   }
   const options = {
     scales: {
@@ -63,8 +68,9 @@ export function LineChart(props) {
           y: priceData.priceUsd,
         })),
         borderColor: chartLineColor,
-        backgroundColor: "rgba(132, 99, 255, 0.5)",
         radius: 0,
+        fill: true,
+        backgroundColor: chartFillColor,
       },
     ],
   };
