@@ -30,13 +30,13 @@ td {
   text-align: right;
 }
 
-th:first-child,
-td:first-child {
-  text-align: left;
-}
-
 .expanded-row {
   cursor: default;
+}
+
+.expanded-row:hover {
+  cursor: default;
+  background-color: #f8f5f2;
 }
 
 .loss {
@@ -49,8 +49,10 @@ td:first-child {
 
 .name-card {
   display: flex;
+  text-align: left;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .name-card h3,
@@ -75,6 +77,7 @@ td:first-child {
 }
 
 .crypto-card__title {
+  text-align: left;
   padding: 10px;
 }
 
@@ -94,11 +97,13 @@ td:first-child {
   padding: 10px;
 }
 
+.crypto-card-size {
+  height: 300px;
+}
+
 .column {
   flex-direction: column;
   flex: 1;
-  padding-left: 25px;
-  align-content: space-between;
 }
 
 .center {
@@ -107,14 +112,41 @@ td:first-child {
   justify-content: center;
 }
 
-.center-left-align {
-  display: flex;
-  align-items: center;
-  justify-content: left;
+.center-text {
+  text-align: center;
 }
 
 .info-title {
-  padding-right: 15px;
+  text-align: left;
   font-weight: 700;
   color: gray;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.mobile {
+  flex-direction: column;
+}
+
+.desktop {
+  flex-direction: row;
+}
+
+span {
+  width: 6em;
+  display: inline-block;
+}
+
+.span-date {
+  width: 7em;
+}
+
+h5 {
+  margin: 0;
+}
+
+h5:last-child {
+  margin-top: 1em;
 }

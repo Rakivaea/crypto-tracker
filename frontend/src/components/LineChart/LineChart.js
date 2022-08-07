@@ -30,8 +30,8 @@ export function LineChart(props) {
   let chartLineColor = "";
   let chartFillColor = "";
   if (props.isGain) {
-    chartLineColor = "rgb(8, 161, 8, .8)";
-    chartFillColor = "rgb(8, 161, 8, .3)";
+    chartLineColor = "rgba(8, 161, 8, .8)";
+    chartFillColor = "rgba(8, 161, 8, .3)";
   } else {
     chartLineColor = "rgba(225, 84, 84, .8)";
     chartFillColor = "rgba(225, 84, 84, .3)";

@@ -62,42 +62,51 @@ function CryptoCardExpanded(props) {
     maxPrice = roundPriceUsd(Number(props.cryptoDetailedData.maxPrice));
     averagePrice = roundPriceUsd(Number(props.cryptoDetailedData.averagePrice));
   }
-  console.log(props.changePercent24Hr);
   return (
     <div className={`crypto-card--expanded`}>
-      {props.isLoading ? (
-        <h1 className="center">Loading...</h1>
-      ) : (
-        <>
-          <div className="crypto-card__info">
-            <div className="crypto-card__title">
-              <h2>
-                {props.name} ({props.symbol})
-              </h2>
-              <span>{currentDate}</span>
-            </div>
-            <div className="crypto-card__stats">
-              <div className="column">
-                <span className="info-title">HIGH</span>
-                <span>${maxPrice}</span>
-                <br />
-                <span className="info-title">LOW</span>
-                <span> ${minPrice}</span>
-              </div>
-              <div className="column">
-                <span className="info-title">AVERAGE</span>
-                <span>${averagePrice}</span>
-                <br />
-                <span className="info-title">CHANGE</span>
-                <span> {props.changePercent24Hr}%</span>
-              </div>
-            </div>
+      <div
+        className={
+          props.isDesktop
+            ? "crypto-card__info desktop"
+            : "crypto-card__info mobile"
+        }
+      >
+        <div className="crypto-card__title">
+          <h2>
+            {props.name} ({props.symbol})
+          </h2>
+          <span className="span-date">{currentDate}</span>
+        </div>
+        <div className="crypto-card__stats">
+          <div className="column">
+            <h5 className="center space-between">
+              <span className="info-title">HIGH</span>
+              <span>{props.isLoading ? "Loading.." : `$${maxPrice}`}</span>
+            </h5>
+            <h5 className="center">
+              <span className="info-title">LOW</span>
+              <span>{props.isLoading ? "Loading.." : `$${minPrice}`}</span>
+            </h5>
           </div>
-          <div className="crypto-card__chart">
-            <LineChart data={props.cryptoDetailedData.data} isGain={isGain} />
+          <div className="column">
+            <h5 className="center">
+              <span className="info-title">AVERAGE</span>
+              <span>{props.isLoading ? "Loading.." : `$${averagePrice}`}</span>
+            </h5>
+            <h5 className="center">
+              <span className="info-title">CHANGE</span>
+              <span>
+                {props.isLoading ? "Loading.." : `${props.changePercent24Hr}%`}
+              </span>
+            </h5>
           </div>
-        </>
-      )}
+        </div>
+      </div>
+      <div className="crypto-card__chart">
+        {props.cryptoDetailedData.data && (
+          <LineChart data={props.cryptoDetailedData.data} isGain={isGain} />
+        )}
+      </div>
     </div>
   );
 }
@@ -132,7 +141,12 @@ export default function CryptoTable(props) {
     return (
       <>
         <tr key={nanoid()} onClick={() => props.handleClick(asset.id, "m5")}>
-          <td colSpan="5">
+          {props.isDesktop && (
+            <td colSpan="1" className="center-text">
+              {asset.rank}
+            </td>
+          )}
+          <td colSpan="2">
             <NameCard name={asset.name} symbol={asset.symbol} />
           </td>
           <td colSpan="3">${priceUsd}</td>
@@ -141,10 +155,11 @@ export default function CryptoTable(props) {
           </td>
         </tr>
         <tr className={showCardClass()}>
-          <td colSpan="11" className="expanded-row">
+          <td colSpan={props.isDesktop ? "9" : "8"} className="expanded-row">
             <CryptoCardExpanded
               cryptoDetailedData={props.cryptoDetailedData}
               isLoading={props.isLoading}
+              isDesktop={props.isDesktop}
               name={asset.name}
               symbol={asset.symbol}
               priceUsd={priceUsd}
@@ -164,7 +179,14 @@ export default function CryptoTable(props) {
       <table>
         <thead className="table-header--light-mode">
           <tr>
-            <th colSpan="5">Name</th>
+            {props.isDesktop && (
+              <th colSpan="1" className="center-text">
+                Rank
+              </th>
+            )}
+            <th colSpan="2" className="left-align">
+              Name
+            </th>
             <th colSpan="3">Price</th>
             <th colSpan="3">Past 24hrs</th>
           </tr>

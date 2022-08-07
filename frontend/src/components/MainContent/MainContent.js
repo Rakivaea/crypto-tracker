@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CryptoTable from "../CryptoTable/CryptoTable";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { ThreeDots } from "react-loader-spinner";
 import "./MainContent.css";
 
 export default function MainContent() {
@@ -20,7 +21,6 @@ export default function MainContent() {
         `http://localhost:3000/crypto/assets/?limit=${currentPosition}`
       );
       const data = await response.json();
-      console.log(data);
       setCryptoAssets(data.data);
 
       setCurrentPosition((prevValue) => prevValue + 5);
@@ -42,7 +42,6 @@ export default function MainContent() {
         }
         const data = await response.json();
 
-        console.log(data);
         setCryptoDetailedData(data);
       } catch (e) {
         console.log(e);
@@ -68,6 +67,7 @@ export default function MainContent() {
         );
         const data = await response.json();
         setCryptoAssets(data.data);
+        console.log(data.data);
         setIsLoading(false);
       } catch (e) {
         console.log(e);
@@ -80,7 +80,14 @@ export default function MainContent() {
   return (
     <main>
       {isLoading ? (
-        <h1>Bro it's loading, lol</h1>
+        <div className="center">
+          <ThreeDots
+            height="60"
+            width="60"
+            color="green"
+            ariaLabel="three-dots-loading"
+          />
+        </div>
       ) : (
         <>
           <CryptoTable
