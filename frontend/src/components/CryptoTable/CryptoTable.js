@@ -5,7 +5,8 @@ import "../../styles/colors.css";
 import { nanoid } from "nanoid";
 
 function roundPercentage(input) {
-  return Math.round((input + Number.EPSILON) * 100) / 100;
+  let roundedVal = Math.round((input + Number.EPSILON) * 100) / 100;
+  return roundedVal.toFixed(2);
 }
 
 function roundPriceUsd(input) {
@@ -23,6 +24,14 @@ function roundPriceUsd(input) {
     roundedVal = roundedVal.toFixed(2);
     return numberWithCommas(roundedVal);
   }
+}
+
+function formatLargeNumber(input) {
+  let formatter = Intl.NumberFormat("en", {
+    notation: "compact",
+    maximumFractionDigits: 2,
+  });
+  return formatter.format(input).toLowerCase();
 }
 
 function getCurrentDate() {
@@ -146,16 +155,29 @@ export default function CryptoTable(props) {
               {asset.rank}
             </td>
           )}
-          <td colSpan="2">
+          <td colSpan="4">
             <NameCard name={asset.name} symbol={asset.symbol} />
           </td>
           <td colSpan="3">${priceUsd}</td>
+          {props.isDesktop && (
+            <td colSpan="3">
+              ${formatLargeNumber(Number(asset.marketCapUsd))}
+            </td>
+          )}
+          {props.isDesktop && (
+            <td colSpan="3">{formatLargeNumber(Number(asset.supply))}</td>
+          )}
+          {props.isDesktop && (
+            <td colSpan="3">
+              ${formatLargeNumber(Number(asset.volumeUsd24Hr))}
+            </td>
+          )}
           <td colSpan="3" className={gainOrLoss}>
             {changePercent24Hr}%
           </td>
         </tr>
         <tr className={showCardClass()}>
-          <td colSpan={props.isDesktop ? "9" : "8"} className="expanded-row">
+          <td colSpan={props.isDesktop ? "20" : "10"} className="expanded-row">
             <CryptoCardExpanded
               cryptoDetailedData={props.cryptoDetailedData}
               isLoading={props.isLoading}
@@ -184,11 +206,14 @@ export default function CryptoTable(props) {
                 Rank
               </th>
             )}
-            <th colSpan="2" className="left-align">
+            <th colSpan="4" className="left-align">
               Name
             </th>
             <th colSpan="3">Price</th>
-            <th colSpan="3">Past 24hrs</th>
+            {props.isDesktop && <th colSpan="3">Market Cap</th>}
+            {props.isDesktop && <th colSpan="3">Supply</th>}
+            {props.isDesktop && <th colSpan="3">Volume (24hr)</th>}
+            <th colSpan="3">Change (24hr)</th>
           </tr>
         </thead>
         <tbody>{cryptoTableElements}</tbody>
