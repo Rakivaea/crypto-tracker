@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CryptoTable from "../CryptoTable/CryptoTable";
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton";
-import useMediaQuery from "../../hooks/useMediaQuery";
+import { useMediaQuery } from "react-responsive";
 import { ThreeDots } from "react-loader-spinner";
 import "./MainContent.css";
 
@@ -13,7 +13,7 @@ export default function MainContent() {
   const [currentPosition, setCurrentPosition] = useState(10);
   const [selectedKey, setSelectedKey] = useState("");
 
-  const isDesktop = useMediaQuery("(min-width: 960px");
+  const isDesktop = useMediaQuery({ query: "(min-width: 960px)" });
 
   async function handleClick() {
     try {

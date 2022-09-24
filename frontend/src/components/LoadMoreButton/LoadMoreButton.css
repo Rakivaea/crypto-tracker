@@ -1,4 +1,4 @@
-button {
+/* button {
   display: inline-block;
   border: none;
 
@@ -28,5 +28,49 @@ button:focus {
 }
 
 button:active {
-  transform: scale(0.5);
+  transform: scale(0.9);
+} */
+
+.circle {
+  background-color: #eae3da;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 3px #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: relative;
+  margin: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+.circle:hover,
+.circle:focus {
+  background-color: #c7bfb4;
+}
+
+.circle:active {
+  transform: scale(0.9);
+}
+
+.circle.plus:before,
+.circle.plus:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: green;
+}
+
+.circle.plus:before {
+  width: 2px;
+  margin: 2px auto;
+}
+
+.circle.plus:after {
+  margin: auto 2px;
+  height: 2px;
 }
