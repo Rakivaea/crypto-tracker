@@ -17,7 +17,7 @@ app.use(cors());
 app.use("/crypto", cryptoRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello world!");
+  res.sendStatus(200);
 });
 
 app.listen(process.env.PORT, () => {
