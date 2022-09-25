@@ -7,7 +7,7 @@ import compression from "compression";
 dotenv.config();
 
 // Routes
-import cryptoRouter from "./src/routes/cryptoRouter.js";
+import cryptoRouter from "./routes/cryptoRouter.js";
 
 const app = express();
 
