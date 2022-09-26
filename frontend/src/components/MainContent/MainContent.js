@@ -18,7 +18,7 @@ export default function MainContent() {
   async function handleClick() {
     try {
       const response = await fetch(
-        `http://localhost:3000/crypto/assets/?limit=${currentPosition}`
+        `https://crypto-tracker-yaed.onrender.com/crypto/assets/?limit=${currentPosition}`
       );
       const data = await response.json();
       setCryptoAssets(data.data);
@@ -35,7 +35,7 @@ export default function MainContent() {
         setIsLoadingExpanded(true);
 
         const response = await fetch(
-          `http://localhost:3000/crypto/${key.toLowerCase()}/history/?interval=${interval}`
+          `https://crypto-tracker-yaed.onrender.com/crypto/${key.toLowerCase()}/history/?interval=${interval}`
         );
         if (response.ok === false) {
           throw new Error("Not good!!");
@@ -63,7 +63,7 @@ export default function MainContent() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          "http://localhost:3000/crypto/assets/?limit=5"
+          "https://crypto-tracker-yaed.onrender.com/crypto/assets/?limit=5"
         );
         const data = await response.json();
         setCryptoAssets(data.data);
