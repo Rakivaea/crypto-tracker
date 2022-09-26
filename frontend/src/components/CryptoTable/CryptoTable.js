@@ -93,14 +93,7 @@ export default function CryptoTable(props) {
     const gainOrLoss = changePercent24Hr > 0 ? "gain" : "loss";
     const isSelected = props.selectedKey === asset.id;
     const showCardClass = () => (isSelected ? "visible" : "hidden");
-    // INTERESTING STUFF BELOW
-    // const pricesWs = new WebSocket(
-    //   "wss://ws.coincap.io/prices?assets=bitcoin,ethereum,monero,litecoin"
-    // );
 
-    // pricesWs.onmessage = function (msg) {
-    //   console.log(msg.data);
-    // };
     return (
       <>
         <tr key={nanoid()} onClick={() => props.handleClick(asset.id, "m5")}>

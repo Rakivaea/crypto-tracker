@@ -75,10 +75,6 @@ router.get("/:assetId/history", (req, res) => {
         averagePrice: averagePrice,
       };
 
-      console.log(`min: ${minPrice}`);
-      console.log(`max: ${maxPrice}`);
-      console.log(`average: ${averagePrice}`);
-
       res.send(newData);
     } catch (err) {
       console.log(err);

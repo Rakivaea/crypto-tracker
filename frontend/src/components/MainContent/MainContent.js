@@ -67,7 +67,6 @@ export default function MainContent() {
         );
         const data = await response.json();
         setCryptoAssets(data.data);
-        console.log(data.data);
         setIsLoading(false);
       } catch (e) {
         console.log(e);
